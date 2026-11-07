@@ -1,5 +1,5 @@
 # логин \ пароль - manuel@gmail.com   Manuel12345$
-from selenium.common import TimeoutException
+from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions
 from selenium.webdriver.support.wait import WebDriverWait
