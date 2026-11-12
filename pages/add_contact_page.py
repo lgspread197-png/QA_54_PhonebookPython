@@ -9,7 +9,7 @@ class ContactPage(BasePage):
     ADD_CONTACT_BUTTON = (By.CSS_SELECTOR, "[href='/add']")
     NAME_INPUT = (By.CSS_SELECTOR, "input[placeholder='Name']")
     LAST_NAME_INPUT = (By.CSS_SELECTOR, "input[placeholder='Last Name']")
-    PHOHE_INPUT = (By.CSS_SELECTOR, "input[placeholder='Phone']")
+    PHONE_INPUT = (By.CSS_SELECTOR, "input[placeholder='Phone']")
     EMAIL_INPUT = (By.CSS_SELECTOR, "input[placeholder='email']")
     ADDRESS_INPUT = (By.CSS_SELECTOR, "input[placeholder='Address']")
     DESCRIPTION_INPUT = (By.CSS_SELECTOR, "input[placeholder='description']")
@@ -33,9 +33,9 @@ class ContactPage(BasePage):
         self.fill(self.LAST_NAME_INPUT,last_name)
 
     def fill_phone(self, phone):
-        # self.driver.find_element(*self.PHOHE_INPUT).clear()
-        # self.driver.find_element(*self.PHOHE_INPUT).send_keys(phone)
-        self.fill(self.PHOHE_INPUT,phone)
+        # self.driver.find_element(*self.PHONE_INPUT).clear()
+        # self.driver.find_element(*self.PHONE_INPUT).send_keys(phone)
+        self.fill(self.PHONE_INPUT,phone)
 
     def fill_email(self, email):
         # self.driver.find_element(*self.EMAIL_INPUT).clear()
