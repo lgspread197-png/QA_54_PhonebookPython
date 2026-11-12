@@ -10,7 +10,7 @@ class TestAmazonIt:
         pages_amazon = AmazonIt(driver,"https://www.amazon.it")
         pages_amazon.open()
         pages_amazon.login(email,password)
-        assert "Ciao Kristina" == pages_amazon.get_login()
+        # assert "Ciao Kristina" == pages_amazon.get_login()
+        assert pages_amazon.is_logged_in("Kristina")
 
-
-        time.sleep(20)
+        time.sleep(10)

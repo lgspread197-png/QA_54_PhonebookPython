@@ -24,6 +24,7 @@ class AmazonIt:
             element = WebDriverWait(self.driver, 10).until(
                 expected_conditions.visibility_of_element_located((By.ID, "nav-link-accountList-nav-line-1")))
 
-            return element.text.find(first_name) != -1
+            # return element.text.find(first_name) != -1
+            return first_name in element.text
         except TimeoutException:
             return False
