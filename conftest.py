@@ -18,7 +18,7 @@ def driver():
 
 
 @pytest.fixture
-def authentication(driver):
+def authenticated(driver):
     login_page = LoginPage(driver)
     login_page.open_login_page()
     login_page.fill_email_field(VALID_EMAIL)

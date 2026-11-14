@@ -1,7 +1,9 @@
+import uuid
+
 from pages.registration_page import RegistrationPage
 
-VALID_EMAIL = "manuel1120@gmail.com"
-VALID_PASSWORD = "Manuel12345$"
+VALID_EMAIL = f"manuel_{uuid.uuid4().hex[:8]}@gmail.com"
+VALID_PASSWORD = "Manuel12349$"
 INVALID_EMAIL = "manuelgmail.com"
 INVALID_PASSWORD = "Manuel12345"
 
