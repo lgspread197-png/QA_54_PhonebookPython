@@ -18,14 +18,18 @@ class ContactsPage(BasePage):
     EDIT_ADDRESS_INPUT = (By.CSS_SELECTOR, "input[placeholder='Address']")
     EDIT_DESCRIPTION_INPUT = (By.CSS_SELECTOR, "input[placeholder='desc']")
     EDIT_SAVE_BUTTON = (By.XPATH, "//button[text()='Save']")
+    DETAILS_CARD = (By.CLASS_NAME, 'contact-item-detailed_card__50dTS')
+    BUTTON_REMOVE = (By.XPATH, "//button[.='Remove']")
 
     def open_contacts_list(self):
         self.click(self.CONTACTS_LINK)
         WebDriverWait(self.driver, 10).until(EC.url_contains("/contacts"))
         time.sleep(1)
 
-    def get_contact_cards(self, phone):
-        return self.driver.find_elements(By.XPATH, f"//h3[text()='{phone}']")
+    # def get_contact_cards(self, phone):
+    #     return self.driver.find_elements(By.XPATH, f"//h3[text()='{phone}']")
+    def get_contact_cards_number(self):
+        return len(self.driver.find_elements(*self.CONTACTS_CARDS))
 
     def contact_cards_visible(self, phone):
         locator = self.get_card_locator(phone)
@@ -50,5 +54,28 @@ class ContactsPage(BasePage):
         self.click(self.EDIT_SAVE_BUTTON)
         time.sleep(1)
 
+    def contact_name_for_phone(self, phone):
+        card = self.find((By.CSS_SELECTOR, ".contact-item-detailed_card__50dTS h2"))
+        return card.text.split()[0]
 
+    def contact_last_name(self):
+        card = self.find((By.CSS_SELECTOR, ".contact-item-detailed_card__50dTS h2"))
+        return card.text.split()[1]
 
+    def contact_email(self):
+        card = self.find(self.DETAILS_CARD)
+        return card.text.split()[3]
+
+    def remove_current_contact(self):
+        self.click(self.BUTTON_REMOVE)
+        time.sleep(1)
+
+    def open_first_contact(self):
+        cards = self.driver.find_elements(*self.CONTACTS_CARDS)
+        first_card = cards[0]
+        first_card.click()
+
+    def remove_all_contacts(self):
+        while self.get_contact_cards_number()>0:
+            self.open_first_contact()
+            self.remove_current_contact()
